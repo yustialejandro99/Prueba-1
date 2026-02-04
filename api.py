@@ -47,72 +47,6 @@ def consultar_comision(personaje, detalle, escenario=None):
     mensaje += f"\n💡 {EXTRAS_RANGE}"
     return mensaje
 
-# ===================== HTML =====================
-html = """
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>ChatBot Comisiones</title>
-    <style>
-        body {
-            font-family: Arial;
-            background: #f0f4f8;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            height:100vh;
-        }
-        .chatbox {
-            background:white;
-            padding:20px;
-            border-radius:12px;
-            box-shadow:0 4px 10px rgba(0,0,0,0.1);
-            width:450px;
-        }
-        input, button {
-            padding:10px;
-            width:100%;
-            margin-top:10px;
-            border-radius:8px;
-            border:1px solid #ccc;
-        }
-        button {
-            background:#28a745;
-            color:white;
-            border:none;
-            cursor:pointer;
-        }
-        button:hover {
-            background:#1e7e34;
-        }
-        .respuesta {
-            margin-top:15px;
-            padding:10px;
-            background:#e8f5e9;
-            border-radius:8px;
-            white-space: pre-line;
-        }
-    </style>
-</head>
-<body>
-    <div class="chatbox">
-        <h2>🎨 ChatBot Comisiones</h2>
-        <form method="POST">
-            <input type="text" name="personaje" placeholder="Personaje (ej: rostro)" required>
-            <input type="text" name="detalle" placeholder="Detalle (ej: sketch, color)" required>
-            <input type="text" name="escenario" placeholder="Escenario (opcional: simple, media, alta)">
-            <button type="submit">Consultar</button>
-        </form>
-
-        {% if respuesta %}
-        <div class="respuesta">{{ respuesta }}</div>
-        {% endif %}
-    </div>
-</body>
-</html>
-"""
-
 # ===================== RUTA =====================
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -128,3 +62,4 @@ def home():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
